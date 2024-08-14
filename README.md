@@ -24,9 +24,9 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
     MULTIPAPER_SLAVE_URL=multipaper-x.y.z-a.jarのDLリンク
         
     MY_NAME=main側が決めるこのサーバーの名前 main管理者に貰うべき
+    MY_PORT=main側が決めるこのサーバーの名前 main管理者に貰うべき
+    VELOCITY_KEY=main側で決まる鍵 main管理者にもらうべき
     MAIN_IP=mainのIP main管理者にもらうべき （IPは途中で変更される可能性があることに留意）
-
-    MY_IP=このサーバーのIP （IPは途中で変更される可能性があることに留意）
     ```
 
 ## サーバーアップデート TODO: 
@@ -36,19 +36,20 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
 - .env内のMULTIPAPER_SLAVE_URLを更新
 - .env内のBASE_IMAGEを適切なJKDイメージに変更
 
-```bash
-# 再ビルド&再起動
-docker compose build && docker compose up -d
+```cmd
+update.bat
+```
 
-# (詳細なログはbuildコマンドに以下を追加)
---progress=plain
+```bash
+update.sh
 ```
 
 ## マイクラ鯖起動
 
-```bash
-# SSHで入った後以下実行でコンテナーup
-docker compose up -d
+```cmd
+start.bat
+```
 
-# サーバーシャットダウン
+```bash
+start.sh
 ```
