@@ -22,6 +22,11 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
     ```env:.env TODO: 
     BASE_IMAGE=jkdのベースイメージ。ここではeclipse-temurin:x.y.z_a-jdkを使用。
     MULTIPAPER_SLAVE_URL=multipaper-x.y.z-a.jarのDLリンク
+        
+    MY_NAME=main側が決めるこのサーバーの名前 main管理者に貰うべき
+    MAIN_IP=mainのIP main管理者にもらうべき （IPは途中で変更される可能性があることに留意）
+
+    MY_IP=このサーバーのIP （IPは途中で変更される可能性があることに留意）
     ```
 
 ## サーバーアップデート TODO: 
