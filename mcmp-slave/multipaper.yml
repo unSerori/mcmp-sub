@@ -6,7 +6,7 @@
 master-connection:
   advertise-to-built-in-proxy: true
   master-address: localhost:35353
-  my-name: main-slave # change point
+  my-name: slave-1 # change point
 optimizations:
   dont-save-just-for-lighting-updates: false
   max-footstep-packets-sent-per-player: -1

@@ -7,14 +7,15 @@ services:  # コンポースするサービスたち
             args:  # 引数
                 - MULTIPAPER_SLAVE_URL=${MULTIPAPER_SLAVE_URL}
                 - BASE_IMAGE=${BASE_IMAGE}
+                - MAIN_IP=${MAIN_IP}
         volumes:  # ボリュームの保持
             - ./mcmp-slave/eula.txt:/root/mcmp-slave/eula.txt # eula
             - ./mcmp-slave/config:/root/mcmp-slave/config # setting file paper-global.yml
             - ./mcmp-slave/server.properties:/root/mcmp-slave/server.properties # setting file
             - ./mcmp-slave/spigot.yml:/root/mcmp-slave/spigot.yml # setting file
         # これいらんかも
-        # ports:  # ホストマシンのポートとコンテナのポートをマッピングしてポートを公開
-        #     - "25566:25565"  # masterが接続するポート
+        ports:  # ホストマシンのポートとコンテナのポートをマッピングしてポートを公開
+            - "25567:25565"  # masterが接続するポート
         restart: always  # コンテナの再起動
         environment:  # 環境変数
             EULA: "true"
