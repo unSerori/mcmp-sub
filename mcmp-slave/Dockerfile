@@ -16,6 +16,16 @@ RUN curl -o multipaper.jar ${MULTIPAPER_SLAVE_URL}
 EXPOSE 25565
 
 # 起動時に鯖実行
+
+# 実行用のスクリプトあげる
+COPY ./execute.sh ./
+RUN chmod +x ./execute.sh
+
+# MAIN_IPを取得
 ARG MAIN_IP
 ENV MAIN_IP=${MAIN_IP}
-CMD ["sh", "-c", "java -DmultipaperMasterAddress=${MAIN_IP}:35353 -Xmx512M -Xms128M -jar multipaper.jar"]
+
+# シェルに値を渡す
+ENTRYPOINT ["/bin/bash", "-c", "./execute.sh ${MAIN_IP}"]
+
+#CMD ["sh", "-c", "java -DmultipaperMasterAddress=${MAIN_IP}:35353 -Xmx512M -Xms128M -jar multipaper.jar"]
