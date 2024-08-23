@@ -29,29 +29,52 @@ MultiPaperはworldデータの保持とロードバランサーを行うMaster�
     MAIN_IP=mainのIP main管理者にもらうべき （IPは途中で変更される可能性があることに留意）
     ```
 
-4.
+## mainへの接続
 
-## サーバーアップデート TODO: 
+ポート開放かtailscaleでシェアするのが楽だと感じた  
+ただ、ポート開放だと施設のネットワーク構成よってはダメになるかもしれないからtailscaleでVPN建てて、デバイスをシェアして接続してもらうのがいいと思う
 
-新しいバージョンがリリースされた場合の更新方法
+### tailscale導入のメリット
 
-- .env内のMULTIPAPER_SLAVE_URLを更新
-- .env内のBASE_IMAGEを適切なJKDイメージに変更
+- ポート開放しなくていい
+- ローカルのデバイス名でアクセスできるから、グローバルIPの変更があってもサーバー設定を更新しなくていい
+
+### subでのtailscale導入手順
+
+1. tailscaleの垢登録: [登録サイト](https://login.tailscale.com/start)
+2. 登録の後そのまま進めば各OSごとのインストール手順があるので従う
+3. [管理コンソール](https://login.tailscale.com/admin/machines)でマシンのシェアリンクを取得してプレイヤーに共有
+
+## sub起動 (windows以外のOSの起動ファイルはstart.batを参考にどうぞ)
+
+初回起動
 
 ```cmd
 update.bat
 ```
 
-```bash
-update.sh
-```
-
-## マイクラ鯖起動
+2回目以降
 
 ```cmd
 start.bat
 ```
 
+## サーバーストップ (windows以外のOSの停止ファイルはstop.batを参考にどうぞ)
+
+```cmd
+stop.bat
+```
+
+## サーバーアップデート (windows以外のOSの更新ファイルはupdate.batを参考にどうぞ)TODO: 
+
+### 新しいバージョンがリリースされた場合の更新方法
+
+諸情報を更新してスクリプト実行
+
+- .env内のMULTIPAPER_SLAVE_URLを更新
+- .env内のBASE_IMAGEを適切なJKDイメージに変更
+
 ```bash
-start.sh
+# 再ビルド&再起動
+bash update.sh
 ```
