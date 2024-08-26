@@ -1,4 +1,4 @@
-# mcmp-main
+# mcmp-sub
 
 ## 概要
 
